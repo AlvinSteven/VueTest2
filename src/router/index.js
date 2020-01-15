@@ -3,17 +3,12 @@ import Router from 'vue-router'
 import HelloWorld from '@/components/HelloWorld'
 import Appindex from '@/components/home/Appindex/Appindex'
 import Login from '@/components/Login/Login'
-import LoginTest from '@/components/LoginTest'
 
 Vue.use(Router)
 
 export default new Router({
+  mode: 'history',
   routes: [
-   /* {
-      path: '/',
-      name: 'HelloWorld',
-      component: HelloWorld
-    },*/
     {
       path: '/login',
       name: 'Login',
@@ -22,12 +17,11 @@ export default new Router({
     {
       path: '/welcome',
       name: 'Appindex',
-      component: Appindex
+      component: Appindex,
+      meta: {
+        requireAuth: true
+      }
     }
-    /*{
-      path: '/',
-      name: 'LoginTest',
-      component: LoginTest
-    }*/
+
   ]
 })

@@ -1,12 +1,13 @@
 <template>
-    <div class="Appindex">
-        <!--<pre v-text="$attrs"/>-->
-      hello world!
-    </div>
+  <div class="Appindex" id="test">
+    <!--<pre v-text="$attrs"/>-->
+    hello world!
+    <a href="#test">Jump to test</a>
+  </div>
 </template>
 
 <script>
-    export default {
-       name: 'Appindex'
-    }
+  export default {
+    name: 'Appindex'
+  }
 </script>
