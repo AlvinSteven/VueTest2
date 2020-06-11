@@ -1,6 +1,6 @@
 <template>
   <div>
-    <i class="el-icon-circle-plus-outline"  @click="dialogFormVisible = true"></i>
+    <i class="el-icon-circle-plus-outline" @click="dialogFormVisible = true"></i>
     <el-dialog
       title="添加/修改图书"
       :visible.sync="dialogFormVisible"
@@ -20,6 +20,7 @@
         </el-form-item>
         <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
           <el-input v-model="form.cover" autocomplete="off" placeholder="图片 URL"></el-input>
+          <image-uploaded @onUpload="uploadImg" ref="imgUpload"></image-uploaded>
         </el-form-item>
         <el-form-item label="简介" :label-width="formLabelWidth" prop="abs">
           <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
@@ -47,9 +48,12 @@
 </template>
 
 <script>
+  import ImageUploaded from '../ImageUploaded/ImageUploaded'
+
   export default {
     name: 'EditForm',
-    data () {
+    components: {ImageUploaded},
+    data() {
       return {
         dialogFormVisible: false,
         form: {
@@ -65,11 +69,15 @@
             name: ''
           }
         },
-        formLabelWidth: '120px'
+        formLabelWidth: '120px',
+        /*fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/' +
+            'thumbnail/360x360/format/webp/quality/100'},
+          {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/' +
+              '360x360/format/webp/quality/100'}]*/
       }
     },
     methods: {
-      clear () {
+      clear() {
         this.form = {
           id: '',
           title: '',
@@ -81,7 +89,8 @@
           category: ''
         }
       },
-      onSubmit () {
+      onSubmit() {
+        console.log('图书分类:' + JSON.stringify(this.form.category))
         this.$axios
           .post('/books', {
             id: this.form.id,
@@ -94,10 +103,14 @@
             category: this.form.category
           }).then(resp => {
           if (resp && resp.status === 200) {
+            console.log('提交成功, 重新加载图书...');
             this.dialogFormVisible = false
             this.$emit('onSubmit')
           }
         })
+      },
+      uploadImg () {
+        this.form.cover = this.$refs.imgUpload.url
       }
     }
   }

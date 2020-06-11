@@ -12,6 +12,15 @@ export default new Router({
   mode: 'history',
   routes: [
     {
+      path: '/',
+      name: 'Appindex',
+      redirect: '/welcome',
+      component: Appindex,
+      meta: {
+        requireAuth: true
+      }
+    },
+    {
       path: '/login',
       name: 'Login',
       component: Login

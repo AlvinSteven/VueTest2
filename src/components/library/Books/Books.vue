@@ -42,10 +42,11 @@
 <script>
   import EditForm from '../EditForm/EditForm'
   import SearchBar from '../SearchBar/SearchBar'
+
   export default {
     name: 'Books',
     components: {EditForm, SearchBar},
-    data () {
+    data() {
       return {
         books: [],
         currentPage: 1,
@@ -56,7 +57,7 @@
       this.loadBooks()
     },
     methods: {
-      loadBooks () {
+      loadBooks() {
         var _this = this
         this.$axios.get('/books').then(resp => {
           if (resp && resp.status === 200) {
@@ -78,7 +79,7 @@
           }
         })
       },*/
-      searchResult () {
+      searchResult() {
         var _this = this
         this.$axios
           .post('/search', {
@@ -89,7 +90,7 @@
           }
         })
       },
-      deleteBook (id) {
+      deleteBook(id) {
         this.$confirm('此操作将永久删除该书籍, 是否继续?', '提示', {
           confirmButtonText: '确定',
           cancelButtonText: '取消',
@@ -110,7 +111,7 @@
         })
         // alert(id)
       },
-      editBook (item) {
+      editBook(item) {
         this.$refs.edit.dialogFormVisible = true
         this.$refs.edit.form = {
           id: item.id,
