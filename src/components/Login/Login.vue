@@ -20,42 +20,41 @@
 
 </template>
 
-<script>
-  export default {
-    name: 'Login',
-    data() {
-      return {
-        loginForm: {
-          username: 'Alvin',
-          password: 'Alvin'
-        },
-        responseResult: []
-      }
-    },
-    methods: {
-      login() {
-        var _this = this
-        console.log(JSON.stringify(this.$store.state));
-        this.$axios
-          .post('/login', {
-            username: this.loginForm.username,
-            password: this.loginForm.password
-          })
-          .then(successResponse => {
-            if (successResponse.data.code === 200) {
-              // this.$router.replace({path: '/welcome'})
+<script>export default {
+  name: 'Login',
+  data () {
+    return {
+      loginForm: {
+        username: 'Alvin',
+        password: 'Alvin'
+      },
+      responseResult: []
+    }
+  },
+  methods: {
+    login () {
+      var _this = this
+      console.log(JSON.stringify(this.$store.state))
+      this.$axios
+        .post('/login', {
+          username: this.loginForm.username,
+          password: this.loginForm.password
+        })
+        .then(successResponse => {
+          if (successResponse.data.code === 200) {
+            // this.$router.replace({path: '/welcome'})
 
-              console.log('test -- code=200');
-              _this.$store.commit('login', _this.loginForm)
-              var path = this.$route.query.redirect
-              this.$router.replace({path: path === '/' || path === undefined ? '/welcome' : path})
-            }
-          })
-          .catch(failResponse => {
-          })
-      }
+            console.log('test -- code=200')
+            _this.$store.commit('login', _this.loginForm)
+            var path = this.$route.query.redirect
+            this.$router.replace({path: path === '/' || path === undefined ? '/welcome' : path})
+          }
+        })
+        .catch(failResponse => {
+        })
     }
   }
+}
 </script>
 
 <style>

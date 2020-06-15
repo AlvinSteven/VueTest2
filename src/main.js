@@ -18,22 +18,22 @@ Vue.prototype.$axios = axios
 Vue.use(ElementUI)
 
 router.beforeEach((to, from, next) => {
-    console.log('test beforeEach')
+  console.log('test beforeEach')
 
-    if (to.meta.requireAuth) {
-      if (store.state.user.username) {
-        console.log('本地存在用户信息:' + JSON.stringify(store.state.user))
-        next()
-      } else {
-        next({
-          path: 'login',
-          query: {redirect: to.fullPath}
-        })
-      }
-    } else {
+  if (to.meta.requireAuth) {
+    if (store.state.user.username) {
+      console.log('本地存在用户信息:' + JSON.stringify(store.state.user))
       next()
+    } else {
+      next({
+        path: 'login',
+        query: {redirect: to.fullPath}
+      })
     }
+  } else {
+    next()
   }
+}
 )
 
 /* eslint-disable no-new */
@@ -42,6 +42,6 @@ new Vue({
   render: h => h(App),
   router,
   store,
-  components: { App },
+  components: {App},
   template: '<App/>'
 })

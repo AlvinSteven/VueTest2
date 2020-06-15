@@ -48,72 +48,72 @@
 </template>
 
 <script>
-  import ImageUploaded from '../ImageUploaded/ImageUploaded'
+import ImageUploaded from '../ImageUploaded/ImageUploaded'
 
-  export default {
-    name: 'EditForm',
-    components: {ImageUploaded},
-    data() {
-      return {
-        dialogFormVisible: false,
-        form: {
+export default {
+  name: 'EditForm',
+  components: {ImageUploaded},
+  data () {
+    return {
+      dialogFormVisible: false,
+      form: {
+        id: '',
+        title: '',
+        author: '',
+        date: '',
+        press: '',
+        cover: '',
+        abs: '',
+        category: {
           id: '',
-          title: '',
-          author: '',
-          date: '',
-          press: '',
-          cover: '',
-          abs: '',
-          category: {
-            id: '',
-            name: ''
-          }
-        },
-        formLabelWidth: '120px',
-        /*fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/' +
-            'thumbnail/360x360/format/webp/quality/100'},
-          {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/' +
-              '360x360/format/webp/quality/100'}]*/
-      }
-    },
-    methods: {
-      clear() {
-        this.form = {
-          id: '',
-          title: '',
-          author: '',
-          date: '',
-          press: '',
-          cover: '',
-          abs: '',
-          category: ''
+          name: ''
         }
       },
-      onSubmit() {
-        console.log('图书分类:' + JSON.stringify(this.form.category))
-        this.$axios
-          .post('/books', {
-            id: this.form.id,
-            cover: this.form.cover,
-            title: this.form.title,
-            author: this.form.author,
-            date: this.form.date,
-            press: this.form.press,
-            abs: this.form.abs,
-            category: this.form.category
-          }).then(resp => {
+      formLabelWidth: '120px'
+      /*fileList: [{name: 'food.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/' +
+          'thumbnail/360x360/format/webp/quality/100'},
+        {name: 'food2.jpeg', url: 'https://fuss10.elemecdn.com/3/63/4e7f3a15429bfda99bce42a18cdd1jpeg.jpeg?imageMogr2/thumbnail/' +
+            '360x360/format/webp/quality/100'}]*/
+    }
+  },
+  methods: {
+    clear () {
+      this.form = {
+        id: '',
+        title: '',
+        author: '',
+        date: '',
+        press: '',
+        cover: '',
+        abs: '',
+        category: ''
+      }
+    },
+    onSubmit () {
+      console.log('图书分类:' + JSON.stringify(this.form.category))
+      this.$axios
+        .post('/books', {
+          id: this.form.id,
+          cover: this.form.cover,
+          title: this.form.title,
+          author: this.form.author,
+          date: this.form.date,
+          press: this.form.press,
+          abs: this.form.abs,
+          category: this.form.category
+        }).then(resp => {
           if (resp && resp.status === 200) {
-            console.log('提交成功, 重新加载图书...');
+            console.log('提交成功, 重新加载图书...')
             this.dialogFormVisible = false
             this.$emit('onSubmit')
           }
         })
-      },
-      uploadImg () {
-        this.form.cover = this.$refs.imgUpload.url
-      }
+    },
+    uploadImg () {
+      this.form.cover = this.$refs.imgUpload.url
     }
   }
+}
 </script>
 
 <style scoped>
