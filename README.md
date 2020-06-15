@@ -1,6 +1,6 @@
 # vuetest2
 
-> A Vue.js project
+> A Vue.js project, for learning.
 
 ## Build Setup
 
