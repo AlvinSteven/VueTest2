@@ -48,9 +48,12 @@
             _this.$store.commit('login', _this.loginForm)
             var path = this.$route.query.redirect
             this.$router.replace({path: path === '/' || path === undefined ? '/welcome' : path})
+          } else {
+            console.log('successResponse.data:' + JSON.stringify(successResponse.data))
           }
         })
         .catch(failResponse => {
+          console.log('failResponse:' + JSON.stringify(failResponse))
         })
     }
   }

@@ -123,7 +123,7 @@ export default {
 <style scoped>
 
   .cover {
-    width: 115px;
+    width: 122px;
     height: 172px;
     margin-bottom: 7px;
     overflow: hidden;
@@ -131,7 +131,7 @@ export default {
   }
 
   img {
-    width: 115px;
+    width: 122px;
     height: 172px;
     /*margin: 0 auto;*/
   }

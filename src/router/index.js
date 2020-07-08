@@ -1,5 +1,5 @@
 import Vue from 'vue'
-import Router from 'vue-router'
+import Router from 'vue-router' // 引入 Vue 路由
 import Appindex from '@/components/home/Appindex/Appindex'
 import Login from '@/components/Login/Login'
 import Home from '@/components/Home'
