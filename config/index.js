@@ -12,8 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       '/api': {
-        // target: 'http://localhost:8443',// 这个貌似不能改, 改了就会报网络错误: net::ERR_CONNECTION_REFUSED
-        target: 'http://fancywonderland.com:8443',
+        target: 'http://localhost:8443',//
+        // target: 'http://fancywonderland.com:8443',
         changeOrigin: true,
         pathRewrite: {
           '^/api':''
@@ -22,8 +22,8 @@ module.exports = {
     },
 
     // Various Dev Server settings
-    // host: 'localhost', // can be overwritten by process.env.HOST
-    host: 'fancywonderland.com', // can be overwritten by process.env.HOST
+    host: 'localhost', // can be overwritten by process.env.HOST
+    // host: 'fancywonderland.com', // can be overwritten by process.env.HOST
     port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
