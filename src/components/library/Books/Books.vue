@@ -60,7 +60,10 @@ export default {
     loadBooks () {
       var _this = this
       this.$axios.get('/books').then(resp => {
+        console.log('test - axios=' + this.$axios.defaults.baseURL)
+        console.log('test - resp=' + JSON.stringify(resp))
         if (resp && resp.status === 200) {
+          console.log('加载图书成功')
           _this.books = resp.data
         }
       })

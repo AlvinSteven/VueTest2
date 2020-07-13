@@ -44,7 +44,7 @@
           if (successResponse.data.code === 200) {
             // this.$router.replace({path: '/welcome'})
 
-            console.log('test -- code=200')
+            console.log('test -- code=200, 登录验证成功')
             _this.$store.commit('login', _this.loginForm)
             var path = this.$route.query.redirect
             this.$router.replace({path: path === '/' || path === undefined ? '/welcome' : path})
