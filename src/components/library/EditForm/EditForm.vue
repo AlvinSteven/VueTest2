@@ -20,7 +20,7 @@
         </el-form-item>
         <el-form-item label="封面" :label-width="formLabelWidth" prop="cover">
           <el-input v-model="form.cover" autocomplete="off" placeholder="图片 URL"></el-input>
-          <image-uploaded @onUpload="uploadImg" ref="imgUpload"></image-uploaded>
+          <image-upload @onUpload="uploadImg" ref="imgUpload"></image-upload>
         </el-form-item>
         <el-form-item label="简介" :label-width="formLabelWidth" prop="abs">
           <el-input type="textarea" v-model="form.abs" autocomplete="off"></el-input>
@@ -48,11 +48,11 @@
 </template>
 
 <script>
-import ImageUploaded from '../ImageUploaded/ImageUploaded'
+import ImageUpload from '../ImageUploaded/ImageUploaded'
 
 export default {
   name: 'EditForm',
-  components: {ImageUploaded},
+  components: {ImageUpload},
   data () {
     return {
       dialogFormVisible: false,
@@ -86,7 +86,10 @@ export default {
         press: '',
         cover: '',
         abs: '',
-        category: ''
+        category: {
+          id: '',
+          name: ''
+        }
       }
     },
     onSubmit () {
@@ -108,6 +111,10 @@ export default {
             this.$emit('onSubmit')
           }
         })
+      // 确认后清空文件列表
+      console.log('this-refs-imgUpload' + this.$refs.imgUpload)
+      // console.log('this-refs-imgUpload(ify)' + JSON.stringify(this.$refs.imgUpload))报错:对象循环引用
+      this.$refs.imgUpload.clear()
     },
     uploadImg () {
       this.form.cover = this.$refs.imgUpload.url

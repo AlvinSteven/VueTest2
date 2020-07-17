@@ -13,8 +13,8 @@ Vue.config.productionTip = false
 var axios = require('axios')
 
 // 切换本地/服务器
-// axios.defaults.baseURL = 'http://localhost:8443/api'
-axios.defaults.baseURL = 'http://fancywonderland.com:8443/api'
+axios.defaults.baseURL = 'http://localhost:8443/api'
+// axios.defaults.baseURL = 'http://fancywonderland.com:8443/api'
 // 全局注册,之后可在其他组件中通过 this.$axios 发送数据
 Vue.prototype.$axios = axios
 

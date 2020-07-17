@@ -2,7 +2,7 @@
   <el-upload
     class="upload-demo"
     ref="upload"
-    action="http://fancywonderland.com:8443/api/covers"
+    action="http://localhost:8443/api/covers"
     :on-preview="handlePreview"
     :on-remove="handleRemove"
     :on-success="handleSuccess"
@@ -30,7 +30,7 @@ export default {
       console.log(file, fileList)
     },
     handlePreview (file) {
-      console.log(file)
+      console.log('handlePreview, file=' + file)
     },
     handleExceed (files, fileList) {
       this.$message.warning(`当前限制选择 1 个文件，本次选择了 ${files.length} 个文件，共选择了 ${files.length + fileList.length} 个文件`)

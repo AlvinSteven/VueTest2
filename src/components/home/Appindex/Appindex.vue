@@ -21,8 +21,10 @@ export default {
     /*font-size: 100px;*/
     /*float: left;*/
     /*padding-bottom: 0;*/
-    /*position: absolute;*/
+    position: fixed;
     bottom: 0px;
-    margin: auto;
+    left:0;
+    right:0;
+    /*margin: auto;*/
   }
 </style>
