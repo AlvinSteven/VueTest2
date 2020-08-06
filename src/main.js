@@ -7,6 +7,10 @@ import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-chalk/index.css'
 import store from './store'
 
+// 前端监控插件
+import * as Sentry from '@sentry/browser'
+import {Vue as VueIntegration} from '@sentry/integrations'
+
 Vue.config.productionTip = false
 
 // 设置反向代理,前端请求默认发送到 http://localhost:8443/api
@@ -19,6 +23,11 @@ axios.defaults.baseURL = 'http://localhost:8443/api'
 Vue.prototype.$axios = axios
 
 Vue.use(ElementUI)
+
+Sentry.init({
+  dsn: 'https://718ec4cd49cb4a20b1877c1655aa5acc@o421681.ingest.sentry.io/5341810',
+  integrations: [new VueIntegration({Vue, attachProps: true, logErrors: true})]
+})
 
 router.beforeEach((to, from, next) => {
   console.log('test beforeEach')

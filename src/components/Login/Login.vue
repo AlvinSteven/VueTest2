@@ -33,6 +33,7 @@
   },
   methods: {
     login () {
+      // myUndefinedFunction()//test
       var _this = this
       console.log(JSON.stringify(this.$store.state))
       this.$axios
