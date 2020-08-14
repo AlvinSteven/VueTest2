@@ -75,14 +75,14 @@ export default {
     searchResult () {
       var _this = this
       var url = 'search?keywords=' + this.$refs.searchBar.keywords
-      /*this.$axios
+      /* this.$axios
         .get('/search', {
           keywords: this.$refs.searchBar.keywords
         }).then(resp => {
           if (resp && resp.status === 200) {
             _this.books = resp.data
           }
-        })*/
+        }) */
       this.$axios
         .get(url).then(resp => {
           if (resp && resp.status === 200) {
