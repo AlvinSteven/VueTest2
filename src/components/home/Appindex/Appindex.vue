@@ -4,6 +4,8 @@
     hello world!
     <a href="#test">Jump to test</a>
 
+    <a href="#test" v-on:click="testError">Test Function</a>
+
     <a href="http://www.beian.miit.gov.cn/" class="footer">豫ICP备20019388号</a>
   </div>
 
@@ -11,7 +13,13 @@
 
 <script>
 export default {
-  name: 'Appindex'
+  name: 'Appindex',
+  methods: {
+    testError () {
+      console.log('test error')
+      myUndefinedFunction5()// test error report
+    }
+  }
 }
 </script>
 
@@ -22,7 +30,7 @@ export default {
     /*float: left;*/
     /*padding-bottom: 0;*/
     position: fixed;
-    bottom: 0px;
+    bottom: 0;
     left:0;
     right:0;
     /*margin: auto;*/

@@ -2,7 +2,7 @@
   <el-upload
     class="upload-demo"
     ref="upload"
-    action="http://localhost:8443/api/covers"
+    action="http://fancywonderland.com:8443/api/covers"
     :on-preview="handlePreview"
     :on-remove="handleRemove"
     :on-success="handleSuccess"
