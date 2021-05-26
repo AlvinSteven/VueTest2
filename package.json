@@ -20,7 +20,7 @@
     "ajv": "^5.0.0",
     "axios": "^0.19.2",
     "babel-plugin-transform-es2015-modules-commonjs": "^6.26.2",
-    "browserslist": "^4.14.0",
+    "browserslist": "^4.16.5",
     "caniuse-lite": "^1.0.30001113",
     "element-ui": "^2.13.2",
     "vue": "^2.5.2",
